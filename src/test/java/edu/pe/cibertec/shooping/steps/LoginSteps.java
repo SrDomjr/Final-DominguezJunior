@@ -14,25 +14,25 @@ public class LoginSteps {
     private String email;
     private String password;
 
-    @Given("{word} opens the shopping Cart application")
+    @Given("Andrea opens the shopping Cart application")
     public void opensTheShoopingCartApplication() {
         Actor andrea = OnStage.theActorCalled("Andrea");
 
     }
 
-    @Given("{word} enters her email {string} and password {string}")
+    @Given("she enters her email {string} and password {string}")
     public void entersHerEmailAndPassword(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    @And("{word} taps the Login button")
+    @And("she taps the Login button")
     public void tapsTheLoginButton() {
         OnStage.theActorInTheSpotlight()
                 .attemptsTo(Login.withCredentials(email, password));
     }
 
-    @And("{word} should see the main screen of the application")
+    @And("she should see the main screen of the application")
     public void checksTheMainScreenOfTheApplication() {
         OnStage.theActorInTheSpotlight()
                 .should(seeThat(TheMainScreen.isVisible(), equalTo(true)));

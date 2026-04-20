@@ -1,0 +1,3 @@
+cucumber.plugin=pretty, net.serenitybdd.cucumber.core.plugin.SerenityReporterParallel
+cucumber.glue=edu.pe.cibertec.shooping
+cucumber.features=src/test/resources/features

@@ -17,7 +17,8 @@
         <cucumber.version>7.34.2</cucumber.version>
         <junit.platform.version>6.0.3</junit.platform.version>
         <junit.jupiter.version>6.0.3</junit.jupiter.version>
-        <appium.version>9.3.0</appium.version>
+        <appium.version>10.1.0</appium.version>
+        <selenium.version>4.40.0</selenium.version>
         <maven.surefire.version>3.5.2</maven.surefire.version>
         <maven.failsafe.version>3.5.2</maven.failsafe.version>
     </properties>
@@ -94,13 +95,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-suite</artifactId>
             <version>${junit.platform.version}</version>
@@ -115,30 +109,16 @@
         </dependency>
 
         <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.27.7</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-api</artifactId>
-            <version>4.41.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-remote-driver</artifactId>
-            <version>4.41.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-support</artifactId>
-            <version>4.41.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
