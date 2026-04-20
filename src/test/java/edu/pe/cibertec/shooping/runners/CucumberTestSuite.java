@@ -13,9 +13,5 @@ import org.junit.platform.suite.api.Suite;
         key = Constants.GLUE_PROPERTY_NAME,
         value = "edu.pe.cibertec.shooping.steps,edu.pe.cibertec.shooping.hooks"
 )
-@ConfigurationParameter(
-        key = Constants.PLUGIN_PROPERTY_NAME,
-        value = "pretty, net.serenitybdd.cucumber.core.plugin.SerenityReporterParallel"
-)
 public class CucumberTestSuite {
 }

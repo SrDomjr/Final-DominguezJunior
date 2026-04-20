@@ -13,22 +13,30 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <serenity.version>5.3.7</serenity.version>
-        <cucumber.version>7.34.2</cucumber.version>
-        <junit.platform.version>6.0.3</junit.platform.version>
-        <junit.jupiter.version>6.0.3</junit.jupiter.version>
-        <appium.version>10.1.0</appium.version>
-        <selenium.version>4.40.0</selenium.version>
+        <serenity.version>4.2.34</serenity.version>
+        <cucumber.version>7.18.1</cucumber.version>
+        <junit.version>5.11.4</junit.version>
+        <appium.version>9.3.0</appium.version>
         <maven.surefire.version>3.5.2</maven.surefire.version>
         <maven.failsafe.version>3.5.2</maven.failsafe.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Alinea todas las versiones de JUnit Jupiter + Platform -->
             <dependency>
-                <groupId>net.serenity-bdd</groupId>
-                <artifactId>serenity-bom</artifactId>
-                <version>${serenity.version}</version>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Alinea todos los selenium-* a la misma version (evita mismatch
+                 entre lo que trae serenity 4.2.x y lo que trae appium 9.3.0) -->
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-bom</artifactId>
+                <version>4.33.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -39,30 +47,42 @@
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-core</artifactId>
+            <version>${serenity.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <!-- Saca junit 4 y junit-vintage, no los usamos -->
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-screenplay</artifactId>
+            <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-screenplay-webdriver</artifactId>
+            <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-cucumber</artifactId>
+            <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-junit5</artifactId>
+            <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -72,7 +92,6 @@
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit-platform-engine</artifactId>
@@ -83,21 +102,16 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
-            <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-suite</artifactId>
-            <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -109,16 +123,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${selenium.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.27.7</version>
+            <version>3.26.3</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

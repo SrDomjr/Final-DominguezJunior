@@ -29,7 +29,7 @@ public class AppiumHooks {
                 .setNoReset(false)
                 .setNewCommandTimeout(Duration.ofSeconds(120));
 
-        driver = new AndroidDriver(new URL(APPIUM_SERVER_URL), options);
+        driver = new AndroidDriver(options);
 
         OnStage.setTheStage(Cast.whereEveryoneCan(actor -> actor.whoCan(
                 BrowseTheWeb.with(driver)
